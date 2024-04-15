@@ -104,25 +104,20 @@ async function run() {
       });
     });
 
-    // ==============================================================
-    // WRITE YOUR CODE HERE
-    // ==============================================================
-
-    // users
-
-    // addProduct
+    // add Products
 
     app.post("/api/v1/products", async (req, res) => {
       const addProduct = req.body;
       const result = await productsCollection.insertOne(addProduct);
       res.send(result);
     });
-    // get product
+    // get All products
     app.get("/api/v1/products", async (req, res) => {
       const result = await productsCollection.find().toArray();
       res.send(result);
     });
-    // singleProducts
+
+    // Get single Products
     app.get("/api/v1/products/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
@@ -130,7 +125,7 @@ async function run() {
       res.send(result);
     });
 
-    // update
+    // update products
     app.put("/api/v1/products/:id", async (req, res) => {
       const id = req.params.id;
       const updatedProduct = req.body;
@@ -152,8 +147,8 @@ async function run() {
 
       res.send(result);
     });
-    //delete
 
+    //delete product
     app.delete("/api/v1/products/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
@@ -161,7 +156,7 @@ async function run() {
       res.send(result);
     });
 
-    // post volunteer
+    // Add volunteer
     app.post("/api/v1/volunteer", async (req, res) => {
       const addVolunteer = req.body;
       const result = await volunteerCollection.insertOne(addVolunteer);
@@ -173,7 +168,7 @@ async function run() {
       res.send(result);
     });
 
-    // testimonial
+    // add testimonial
     app.post("/api/v1/testimonial", async (req, res) => {
       const addTestimonial = req.body;
       const result = await testimonialCollection.insertOne(addTestimonial);
@@ -184,7 +179,7 @@ async function run() {
       const result = await communityCollection.find().toArray();
       res.send(result);
     });
-    // testimonial
+    //add testimonial
     app.post("/api/v1/community", async (req, res) => {
       const addCommunity = req.body;
       const result = await communityCollection.insertOne(addCommunity);
